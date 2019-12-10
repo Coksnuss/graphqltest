@@ -9,3 +9,4 @@
 ###< symfony/framework-bundle ###
 
 /db/
+/.idea/
