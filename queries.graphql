@@ -1,0 +1,47 @@
+mutation {
+  createTeacher(input: {
+    _id: 1
+    universityId: 1
+    name: "John Doe"
+  }) {
+    teacher {
+      id
+      _id
+      universityId
+      name
+    }
+  }
+}
+
+mutation {
+  createLecture(input: {
+    _id: 1
+    universityId: 1
+    description: "Math 101"
+    lecturers: ["api/teachers/id=1;universityId=1"]
+  }) {
+    lecture {
+      id
+      _id
+      universityId
+      description
+    }
+  }
+}
+
+query {
+  teacher(id: "/api/teachers/id=1;universityId=1") {
+    id
+    universityId
+    name
+    lectures {
+      edges {
+        node {
+          id
+          universityId
+          description
+        }
+      }
+    }
+  }
+}
